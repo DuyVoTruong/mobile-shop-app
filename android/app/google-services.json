@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "485684259654",
+    "project_id": "bandienthoaiapp",
+    "storage_bucket": "bandienthoaiapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485684259654:android:b3456a84948dc32d8b1347",
+        "android_client_info": {
+          "package_name": "com.example.app_ban_dien_thoai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485684259654-oo0tgsda8h9doh0ku24su57jid054cai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK2i7X4q7kWWt_Xb8wJcsQlZqsiKIfCPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485684259654-oo0tgsda8h9doh0ku24su57jid054cai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485684259654:android:37f0f4f98a4619228b1347",
+        "android_client_info": {
+          "package_name": "com.example.mobile_shop_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485684259654-oo0tgsda8h9doh0ku24su57jid054cai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK2i7X4q7kWWt_Xb8wJcsQlZqsiKIfCPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485684259654-oo0tgsda8h9doh0ku24su57jid054cai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
