@@ -1,53 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_shop_app/controllers/cart_controller.dart';
 import 'package:mobile_shop_app/routes/app_routes.dart';
-import 'package:mobile_shop_app/views/login_page.dart';
 
 class AppBarShop extends StatelessWidget with PreferredSizeWidget{
+  const AppBarShop({super.key});
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context){
 
-    void handleClick(int value, context) {
-      switch (value) {
-        case 0:
-          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
-          break;
-        case 1:
-          Get.toNamed(AppRoutes.sellerHome);
-          break;
-      }
-    }
+    CartController cartController = Get.put(CartController());
 
     return AppBar(
       foregroundColor: Colors.black,
       backgroundColor: Colors.white,
       shadowColor: Colors.black12,
-      title: Text("Mobile Shop", style: TextStyle(color: Colors.black),),
+      //title: Text("Mobile Shop", style: TextStyle(color: Colors.black),),
+      title: const Text('Mobile Shop', style: TextStyle(color: Colors.black)),
       actions: <Widget>[
-        SizedBox(
-          width: 250,
-          height: 100,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              decoration: InputDecoration(
-                suffixIcon: Icon(Icons.search),
-                hintText: 'Search',
-              ),
+        IconButton(
+            onPressed: (){
+              Get.toNamed(AppRoutes.search);
+            },
+            icon: const Icon(Icons.search)
+        ),
+        Stack(
+          alignment: Alignment.centerLeft,
+          children: [
+            IconButton(
+              color: Colors.black54,
+              onPressed: (){
+                Get.toNamed(AppRoutes.cart);
+              },
+              icon: const Icon(Icons.shopping_cart)
             ),
-          ),
-        ),
-        PopupMenuButton<int>(
-          onSelected: (item) => handleClick(item, context),
-          itemBuilder: (context) => [
-            PopupMenuItem<int>(value: 0, child: Text('Login')),
-            PopupMenuItem<int>(value: 1, child: Text('Seller')),
+            Obx(() => Positioned(
+              right: 2,
+              top: 8,
+              child: CircleAvatar(
+                radius: 8,
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                child: Text('${cartController.tongSoLuong.value}', style: const TextStyle(fontSize: 8),),
+              ),
+            )),
           ],
-        ),
+        )
       ],
     );
   }

@@ -1,27 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel{
-  final String id;
-  final String username;
-  final String password;
-  final String ten;
-  final String sdt;
-  final String diaChi;
-  final bool isUser;
+  String id;
+  String email;
+  String password;
+  String ten;
+  String sdt;
+  String diaChi;
+  bool isUser;
 
-  final DocumentReference reference;
+  DocumentReference reference;
 
   UserModel.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(
     snapshot.data() as Map<dynamic, dynamic>,
     reference: snapshot.reference,
   );
+
   UserModel.fromMap(
       Map<dynamic, dynamic> map, {
         required this.reference,
       }) :
         assert(map['id'] != null),
-        assert(map['username'] != null),
+        assert(map['email'] != null),
         assert(map['password'] != null),
         assert(map['ten'] != null),
         assert(map['sdt'] != null),
@@ -29,13 +30,15 @@ class UserModel{
         assert(map['isUser'] != null),
 
         id = map['id'],
-        username = map['username'],
+        email = map['email'],
         password = map['password'],
         ten = map['ten'],
         sdt = map['sdt'],
         diaChi = map['diaChi'],
         isUser = map['isUser'];
 
+  UserModel({required this.id, required this.email, required this.password, required this.ten, required this.sdt, required this.diaChi, required this.isUser, required this.reference});
+
   @override
-  String toString() => "Record<$id:$ten:$sdt:$diaChi:$username:$password:$isUser>";
+  String toString() => "Record<$id:$ten:$sdt:$diaChi:$email:$password:$isUser>";
 }

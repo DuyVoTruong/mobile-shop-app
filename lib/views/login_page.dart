@@ -1,7 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mobile_shop_app/controllers/user_controller.dart';
 import 'package:mobile_shop_app/routes/app_routes.dart';
@@ -38,10 +36,11 @@ class _LoginPageState extends State<LoginPage>{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: TextField(
+                    textInputAction: TextInputAction.next,
                     controller: emailController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Email",
                       prefixIcon: Icon(Icons.email_outlined),
@@ -49,11 +48,14 @@ class _LoginPageState extends State<LoginPage>{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: TextField(
+                    onEditingComplete: (){
+                      controller.signIn(context, emailController, passwordController);
+                    },
                     controller: passwordController,
                     obscureText: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Password",
                       prefixIcon: Icon(Icons.password_outlined),
@@ -61,16 +63,16 @@ class _LoginPageState extends State<LoginPage>{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: ElevatedButton(
                     onPressed: ()=>controller.signIn(context, emailController, passwordController),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.amber,
-                      minimumSize: Size(150, 50),
+                      minimumSize: const Size(150, 50),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
+                      children: const <Widget>[
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                           child: Icon(Icons.login_outlined),
@@ -84,9 +86,9 @@ class _LoginPageState extends State<LoginPage>{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: GestureDetector(
-                    child: Text(
+                    child: const Text(
                       'Forgot Password?',
                       style: TextStyle(
                         decoration: TextDecoration.underline,
@@ -99,10 +101,10 @@ class _LoginPageState extends State<LoginPage>{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: RichText(
                     text: TextSpan(
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                         text: 'No account? ',
                         children: [
                           TextSpan(
@@ -110,7 +112,7 @@ class _LoginPageState extends State<LoginPage>{
                               Get.toNamed(AppRoutes.register);
                             },
                             text: 'Sign up',
-                            style: TextStyle(
+                            style: const TextStyle(
                               decoration: TextDecoration.underline,
                               color: Colors.blue,
                             ),
@@ -119,7 +121,7 @@ class _LoginPageState extends State<LoginPage>{
                     ),
                   ),
                 ),
-                Padding(
+                /*Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -137,7 +139,7 @@ class _LoginPageState extends State<LoginPage>{
                       )
                     ],
                   )
-                ),
+                ),*/
               ],
             ),
           ),

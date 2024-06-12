@@ -8,7 +8,7 @@ class ShowDialogMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Message"),
+      title: const Text("Message"),
       content: Text(e.message.toString()),
       actions: [
         TextButton(

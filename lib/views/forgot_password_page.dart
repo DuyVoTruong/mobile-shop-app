@@ -37,7 +37,7 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage>{
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text("Message"),
+          title: const Text("Message"),
           content: Text(e.message.toString()),
           actions: [
             TextButton(
@@ -64,17 +64,17 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage>{
           children: <Widget>[
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 16.0),
-              child: Text("Login",
+              child: Text("Reset Password",
                 style: TextStyle(
                     fontSize: 35.0
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
               child: TextFormField(
                 controller: emailController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Email",
                   prefixIcon: Icon(Icons.email_outlined),
@@ -88,16 +88,16 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage>{
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
               child: ElevatedButton(
                 onPressed: verifyEmail,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.amber,
-                  minimumSize: Size(150, 50),
+                  minimumSize: const Size(150, 50),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
+                  children: const <Widget>[
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                       child: Icon(Icons.login_outlined),

@@ -41,6 +41,11 @@ dependencies:
   firebase_core: ^2.7.0
   email_validator: ^2.1.17
   carousel_slider: ^4.2.1
+  flutter_rating_bar: ^4.0.1
+  file_picker: ^5.2.11
+  firebase_storage: ^11.1.1
+  http: ^0.13.6
+  flutter_stripe: ^5.0.0
 
 dev_dependencies:
   flutter_test:

@@ -14,16 +14,17 @@ class ProductManagementPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
+    controller.GetAllProduct();
     return Scaffold(
             appBar: AppBar(
-              title: Text("Quản lý sản phẩm"),
+              title: const Text("Quản lý sản phẩm"),
             ),
             floatingActionButton: FloatingActionButton(
                 onPressed: (){
                   showDialog(
                       context: context,
                       builder: (BuildContext context){
-                        return AddProduct();
+                        return const AddProduct();
                       }
                   );
                 },
@@ -31,92 +32,108 @@ class ProductManagementPage extends StatelessWidget {
                 tooltip: 'Thêm sản phẩm',
                 child: const Icon(Icons.add)),
             body:Obx(() => Container(
-              margin: EdgeInsets.all(10),
-              child: ListView.builder(
-                itemCount: controller.productList.length,
-                itemBuilder: (BuildContext context, int index){
-                  return Center(
-                    child: Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            SizedBox(
-                              width: 88,
-                              child: AspectRatio(
-                                aspectRatio: 0.88,
-                                child: Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    color: Color(0XFFF5F6F9),
-                                    borderRadius: BorderRadius.circular(15),
+              margin: const EdgeInsets.all(10),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: controller.productList.length,
+                      itemBuilder: (BuildContext context, int index){
+                        return Center(
+                          child: Column(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  SizedBox(
+                                    width: 88,
+                                    child: AspectRatio(
+                                      aspectRatio: 0.88,
+                                      child: Container(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          color: const Color(0XFFF5F6F9),
+                                          borderRadius: BorderRadius.circular(15),
+                                        ),
+                                        child: Image.network(controller.productList[index].image.toString()),
+                                      ),
+                                    ),
                                   ),
-                                  child: Image.network(controller.productList[index].image.toString()),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 15),
-                            Expanded(
-                                flex: 2,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      controller.productList[index].ten.toString(),
-                                      style: TextStyle(color: Colors.black, fontSize: 16),
-                                      maxLines: 2,
-                                    ),
-                                    const SizedBox(height: 10,),
-                                    Row(
-                                      children: <Widget>[
-                                        Text("Giá: "),
-                                        Text(controller.productList[index].gia.toString(), style: TextStyle(color: Colors.red),),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 10,),
-                                    Row(
+                                  const SizedBox(width: 15),
+                                  Expanded(
+                                      flex: 2,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Text("Mô tả: "),
-                                          Text(controller.productList[index].moTa.toString(), style: TextStyle(color: Colors.red),),
-                                        ]
-                                    ),
-                                  ],
-                                )),
-                            const SizedBox(width: 50,),
-                            Expanded(
-                                flex: 1,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    ElevatedButton(
-                                      onPressed: (){
-                                        showDialog(
-                                            context: context,
-                                            builder: (BuildContext context){
-                                              return UpdateProduct(index: index);
-                                            }
-                                        );
-                                      },
-                                      child: Text("Cập nhật"),
-                                    ),
-                                    const SizedBox(height: 10,),
-                                    ElevatedButton(
-                                      onPressed: (){
-                                        controller.deleteProduct(controller.productList[index].reference.id);
-                                      },
-                                      child: Text("Xóa"),
-                                      style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                                    ),
-                                    const SizedBox(height: 10,),
-                                  ],
-                                )),
-                          ],
-                        ),
-                        SizedBox(height: 16,),
-                        const Divider(),
-                      ],
+                                          Text(
+                                            controller.productList[index].ten.toString(),
+                                            style: const TextStyle(color: Colors.black, fontSize: 16),
+                                            maxLines: 2,
+                                          ),
+                                          const SizedBox(height: 10,),
+                                          Row(
+                                            children: <Widget>[
+                                              const Text("Giá: "),
+                                              Text(controller.productList[index].gia.toString(), style: const TextStyle(color: Colors.red),),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 10,),
+                                          Row(
+                                              children: <Widget>[
+                                                const Text("Mô tả: "),
+                                                Flexible(
+                                                    child: Text(
+                                                        controller.productList[index].moTa.toString(),
+                                                        style: const TextStyle(color: Colors.red),
+                                                        overflow: TextOverflow.ellipsis, maxLines: 1
+                                                    )
+                                                ),
+                                              ]
+                                          ),
+                                        ],
+                                      )),
+                                  const SizedBox(width: 50,),
+                                  Expanded(
+                                      flex: 1,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          ElevatedButton(
+                                            style: const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.all(8))),
+                                            onPressed: (){
+                                              showDialog(
+                                                  context: context,
+                                                  builder: (BuildContext context){
+                                                    return UpdateProduct(index: index);
+                                                  }
+                                              );
+                                            },
+                                            child: const Text("Cập nhật"),
+                                          ),
+                                          const SizedBox(height: 10,),
+                                          ElevatedButton(
+                                            onPressed: (){
+                                              controller.deleteProduct(controller.productList[index].reference.id);
+                                            },
+                                            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                                            child: const Text("Xóa"),
+                                          ),
+                                          const SizedBox(height: 10,),
+                                        ],
+                                      )),
+                                ],
+                              ),
+                              const SizedBox(height: 16,),
+                              const Divider(),
+                            ],
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
+                    const SizedBox(height: 30.0,),
+                  ],
+                ),
               ),
             )
             ),

@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_shop_app/controllers/user_controller.dart';
@@ -6,22 +5,21 @@ import 'package:mobile_shop_app/routes/app_routes.dart';
 
 class SideBar extends StatelessWidget {
 
+  const SideBar({super.key});
+
   static UserController controller = Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {
-    controller.user.value!=null
-        ?controller.getUserByEmail(controller.user.value!.email.toString())
-        :null;
     return Obx(()=> Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          controller.user.value == null
-              ? Text('')
+          controller.userAuth.value == null
+              ? const Text('')
               : UserAccountsDrawerHeader(
-                  accountName: Text(controller!.userByEmail.toString()),
-                  accountEmail: Text(controller.user.value!.email.toString()),
+                  accountName: Text(controller.user.value?.ten.toString()??''),
+                  accountEmail: Text(controller.userAuth.value!.email.toString()),
                   currentAccountPicture: ClipOval(
                     child: Image.network(
                       'https://media.istockphoto.com/id/1209654046/vector/user-avatar-profile-icon-black-vector-illustration.jpg?s=612x612&w=0&k=20&c=EOYXACjtZmZQ5IsZ0UUp1iNmZ9q2xl1BD1VvN6tZ2UI=',
@@ -30,7 +28,7 @@ class SideBar extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.blue,
                       image: DecorationImage(
                         image: NetworkImage(
@@ -39,45 +37,41 @@ class SideBar extends StatelessWidget {
                       )),
                 ),
           ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text('Favorites'),
-            onTap: () => null,
+            leading: const Icon(Icons.favorite),
+            title: const Text('Favorites'),
+            onTap: (){
+              Get.toNamed(AppRoutes.favorite);
+            },
           ),
           ListTile(
-            leading: Icon(Icons.people),
-            title: Text('Account'),
-            onTap: () => null,
+            leading: const Icon(Icons.people),
+            title: const Text('Account'),
+            onTap: (){
+              Get.toNamed(AppRoutes.updateAccount);
+            },
           ),
           ListTile(
-            leading: Icon(Icons.share),
-            title: Text('Share'),
-            onTap: () => null,
+            leading: const Icon(Icons.password),
+            title: const Text('Reset password'),
+            onTap: (){
+              Get.toNamed(AppRoutes.forgotPassword);
+            },
           ),
-          ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Verify'),
-            onTap: () => null,
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Setting'),
-            onTap: () => null,
-          ),
-          Divider(),
-          controller.user.value == null
+          const Divider(),
+          controller.userAuth.value == null
               ? ListTile(
-                  leading: Icon(Icons.login_outlined),
-                  title: Text('Log in'),
+                  leading: const Icon(Icons.login_outlined),
+                  title: const Text('Log in'),
                   onTap: () {
                     Get.toNamed(AppRoutes.login);
                   },
                 )
               : ListTile(
-                  leading: Icon(Icons.exit_to_app_outlined),
-                  title: Text('Log out'),
+                  leading: const Icon(Icons.exit_to_app_outlined),
+                  title: const Text('Log out'),
                   onTap: () {
                     controller.logout();
-                    //Get.toNamed(AppRoutes.login);
+                    Get.toNamed(AppRoutes.login);
                   },
                 ),
         ],

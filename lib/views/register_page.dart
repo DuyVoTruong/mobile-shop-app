@@ -39,10 +39,10 @@ class _RegisterPage extends State<RegisterPage>{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: TextFormField(
                     controller: emailController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Email",
                       prefixIcon: Icon(Icons.email_outlined),
@@ -56,11 +56,11 @@ class _RegisterPage extends State<RegisterPage>{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: TextFormField(
                     controller: passwordController,
                     obscureText: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Password",
                       prefixIcon: Icon(Icons.password_outlined),
@@ -73,46 +73,46 @@ class _RegisterPage extends State<RegisterPage>{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: TextField(
                     controller: tenController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Text('Tên'),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: TextField(
                     controller: sdtController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Text('SĐT'),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: TextField(
                     controller: diaChiController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Text('Địa chỉ'),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: ElevatedButton(
                     onPressed: ()=>controller.signUp(context, emailController, passwordController, tenController, sdtController, diaChiController),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.amber,
-                      minimumSize: Size(150, 50),
+                      minimumSize: const Size(150, 50),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
+                      children: const <Widget>[
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                           child: Icon(Icons.login_outlined),
@@ -126,10 +126,10 @@ class _RegisterPage extends State<RegisterPage>{
                   ),
                 ),
                 Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                     child: RichText(
                       text: TextSpan(
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                           text: 'Have an account? ',
                           children: [
                             TextSpan(
@@ -137,7 +137,7 @@ class _RegisterPage extends State<RegisterPage>{
                                   Get.toNamed(AppRoutes.login);
                                 },
                                 text: 'Login',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   decoration: TextDecoration.underline,
                                   color: Colors.blue,
                                 )

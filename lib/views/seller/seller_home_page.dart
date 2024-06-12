@@ -6,7 +6,7 @@ class SellerHomePage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return Scaffold(
+    return const Scaffold(
       appBar: SellerAppBar(),
       body: Center(
         child: Text('Welcome to seller home'),

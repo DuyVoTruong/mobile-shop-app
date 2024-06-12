@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mobile_shop_app/models/product_model.dart';
 
@@ -12,6 +10,7 @@ class OrderModel{
   final String tongTien;
   final String diaChiGiao;
   final int trangThai;
+  final String hinhThucThanhToan;
 
   final DocumentReference reference;
 
@@ -32,6 +31,8 @@ class OrderModel{
         assert(map['tongTien'] != null),
         assert(map['diaChiGiao'] != null),
         assert(map['trangThai'] != null),
+        assert(map['hinhThucThanhToan'] != null),
+
         id = map['id'],
         productList = map['productList'].map((product)=>ProductModel.fromMap(product, reference: reference)).toList(),
         soLuongList = map['soLuongList'].map((soLuong)=>soLuong).toList(),
@@ -39,7 +40,8 @@ class OrderModel{
         ngayDat = (map['ngayDat'] as Timestamp).toDate(),
         tongTien = map['tongTien'],
         diaChiGiao = map['diaChiGiao'],
-        trangThai = map['trangThai'];
+        trangThai = map['trangThai'],
+        hinhThucThanhToan = map['hinhThucThanhToan'];
 
 
   @override
